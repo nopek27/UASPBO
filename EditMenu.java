@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class EditMenu extends Main{
    public static Scanner scan = new Scanner(System.in);
+   static String namaminuman;
     public static void Menu(){
 		   String cobalagi ="n";
 		   
@@ -71,14 +72,15 @@ public class EditMenu extends Main{
 		
 		try {
 		int nomor = scan.nextInt();
-		
-		System.out.println("Apakah anda yakin menghapus " + listminuman.get(nomor-1).minuman + " dari menu?(y/n)");
+		Gudang minuman = listminuman.get(nomor - 1);
+		namaminuman=minuman.getminuman();
+		System.out.println("Apakah anda yakin menghapus Menu Nomor" + namaminuman + " dari menu?(y/n)");
 		scan.nextLine();
 		String validation = scan.nextLine();
 		
 		if(validation.equals("y")) {
 		listminuman.remove(nomor-1);
-		System.out.println("Makanan berhasil dihapus!");
+		System.out.println("Minuman berhasil dihapus!");
 		}
 		}catch(Exception e) {
 			System.out.println("Nomor tidak ada!");
@@ -87,24 +89,25 @@ public class EditMenu extends Main{
 	}
 	private static void updateMenu() {
 	Main.show();
-		System.out.print("Masukkan nomor menu yang ingin di delete: ");
+		System.out.print("Masukkan nomor menu yang ingin di ubah: ");
 		
 		try {
 		int nomor = scan.nextInt();
-		
-		System.out.println("Apakah anda yakin mengganti menu " + listminuman.get(nomor-1).minuman + " dari menu?(y/n)");
+		Gudang minuman = listminuman.get(nomor - 1);
+		namaminuman=minuman.getminuman();
+		System.out.println("Apakah anda yakin mengganti menu " + namaminuman+ " dari menu?(y/n)");
 		scan.nextLine();
 		String validation = scan.nextLine();
 		
 		if(validation.equals("y")) {
 		listminuman.remove(nomor-1);
 		System.out.print("Masukkan Nama Minuman Baru: ");
-		String minuman = scan.nextLine();
+		String minumanbaru = scan.nextLine();
 
 		System.out.print("Masukkan harga Minuman: ");
 		int harga = scan.nextInt();
 
-		Gudang minumanan = new Gudang(minuman, harga);
+		Gudang minumanan = new Gudang(minumanbaru, harga);
 		listminuman.add(minumanan);
 		
 		

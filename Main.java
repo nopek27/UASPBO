@@ -4,15 +4,20 @@ import java.util.Scanner;
 //Encaptulation : private setget
 //Inheritance : extends
 //Polimorfisme : override overloading
-//Abstract : abstract
+//Abstract
+//catatan kecil  
 
 
 public class Main {
     public static ArrayList<Gudang>listminuman = new ArrayList<>();
 
+    public static  Gudang gudang = new Gudang();
+    static int harga = gudang.getharga();
+    static String minuman = gudang.getminuman();
     public static Scanner scan = new Scanner(System.in);
     public static EditMenu editmenu = new EditMenu();
     public static text text = new text();
+    
     public static void main(String[] args) {
         String cobalagi = "n";
         String kembali = "n";
@@ -68,38 +73,49 @@ public class Main {
 
 }
            
-
-       
-        
+ 
     
     //method inisiasi
     public static void initGudang(){
+      
         Gudang minuman1 = new Gudang("Arak Original", 30000);
-        Gudang minuman2 = new Gudang("Arak Leci", 60000);
-        Gudang minuman3 = new Gudang("Arak Madu", 30000);
-
+        Gudang minuman2 = new Gudang("Arak Leci", 10000);
+        Gudang minuman3 = new Gudang("Arak Madu", 10000);
+        Gudang minuman4 = new Gudang("Arak Coklat", 15000);
+        Gudang minuman5 = new Gudang(); 
         listminuman.add(minuman1);
         listminuman.add(minuman2);
         listminuman.add(minuman3);
+        listminuman.add(minuman4);
+        listminuman.add(minuman5);
+
+
     }
+
 
     //method showing
    public static void show(){
-    for(int i = 0; i < listminuman.size(); i++){
-	System.out.println((i+1)+ "\t" + listminuman.get(i).minuman + "\t\t" + listminuman.get(i).harga);
-
+    System.out.println("Nama Minuman \t\t Harga");
+    int nomer = 1;
+    for(Gudang gudang : listminuman){
+        System.out.println(nomer+"."+gudang.getminuman()+"\t\t"+gudang.getharga());
+        nomer = nomer+1;
     }
     }
 
     //method order
     public static int Beli(){
-        int totalharga=0;
-            System.out.print("Masukkan Nomer Pesanan = ");
-            int nomorpesanan = scan.nextInt();
-                if(nomorpesanan !=0){ 
-                    totalharga = listminuman.get(nomorpesanan-1).harga; 
-                }
-        return totalharga;
+        int totalharga = 0;
+    System.out.print("Masukkan Nomor Pesanan = ");
+    int nomorpesanan = scan.nextInt();
+    if (nomorpesanan >= 1 && nomorpesanan <= listminuman.size()) {
+        Gudang minuman = listminuman.get(nomorpesanan - 1);
+        totalharga = minuman.getharga();
+        System.out.println("Pesanan: " + minuman.getminuman() + ", Harga: " + minuman.getharga());
+    } else {
+        System.out.println("Nomor Pesanan Tidak Valid");
+    }
+    return totalharga;
     }
 
 
