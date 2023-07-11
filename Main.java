@@ -1,19 +1,13 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//Encaptulation : private setget
-//Inheritance : extends
-//Polimorfisme : override overloading
-//Abstract
-//catatan kecil  
-
 
 public class Main {
     public static ArrayList<Gudang>listminuman = new ArrayList<>();
 
-    public static  Gudang gudang = new Gudang();
-    static int harga = gudang.getharga();
-    static String minuman = gudang.getminuman();
+    public static  Gudang gudang = new Gudang(); //pembuatan objek baru class Gudang
+    static int harga = gudang.getharga(); //mengambil nilai arraylist namun harganya saja dari variable harga yang diprivate
+    static String minuman = gudang.getminuman(); //mengambil nilai arraylist nama minumannya saja dari variable minuman yang di private
     public static Scanner scan = new Scanner(System.in);
     public static EditMenu editmenu = new EditMenu();
     public static text text = new text();
@@ -82,7 +76,7 @@ public class Main {
         Gudang minuman2 = new Gudang("Arak Leci", 10000);
         Gudang minuman3 = new Gudang("Arak Madu", 10000);
         Gudang minuman4 = new Gudang("Arak Coklat", 15000);
-        Gudang minuman5 = new Gudang(); 
+        Gudang minuman5 = new Gudang(); //membuat objek baru dari method Gudang tanpa parameter
         listminuman.add(minuman1);
         listminuman.add(minuman2);
         listminuman.add(minuman3);

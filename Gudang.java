@@ -7,7 +7,7 @@ class Gudang{
    private String minuman;
    private int harga;
 
-    public Gudang(String minuman ,int harga){
+    public Gudang(String minuman ,int harga){ //dengan parameter 
         this.minuman = minuman;
         this.harga = harga;
 
@@ -22,7 +22,7 @@ class Gudang{
         return harga;
     }
 
-    public  Gudang(){
+    public  Gudang(){ //tidak dengan parameter (revisi)
         this.harga =   30000;
         this.minuman = "Arak Bali";
     }
